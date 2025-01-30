@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تهكير الهاتف</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            overflow: hidden;
+        }
+        #terminal {
+            height: 100vh;
+            overflow-y: hidden;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+    <audio id="alertSound" src="https://www.myinstants.com/media/sounds/error.mp3"></audio>
+
+    <script>
+        function generateRandomNumbers() {
+            let terminal = document.getElementById("terminal");
+            let line = "";
+            for (let i = 0; i < 50; i++) {
+                line += Math.floor(Math.random() * 10) + " ";
+            }
+            terminal.innerHTML += line + "<br>";
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function playAlertSound() {
+            let sound = document.getElementById("alertSound");
+            sound.play();
+        }
+
+        setInterval(generateRandomNumbers, 100);
+        setInterval(playAlertSound, 5000);
+    </script>
+</body>
+</html>
